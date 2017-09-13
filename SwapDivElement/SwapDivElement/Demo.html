@@ -1,0 +1,138 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.4.2.min.js"></script>
+	<script src="jquery-swapsies.js"></script>
+	<script type="text/javascript">
+
+		$(document).ready(function () {
+			//alert($('#divs > div').children().size());
+
+			$(".go-swap").change(function() {
+
+				// get the selection value
+				var id = $(this).attr('id');
+				
+				var eventElementValue = $(this).val();
+				//alert(eventElementValue);
+
+				// get the parent element div id
+				var parentElementId = $(this).closest('div').attr('class');
+				//alert(parentElementId);
+
+				// update the order option value
+				var target = "order" + eventElementValue;
+				
+				var originalValue = $(this).val();
+				var targetValue = $("#div" + eventElementValue + "_order").val();
+
+				//alert(originalValue);
+				//alert(targetValue);
+				
+				$("." + parentElementId).swap({
+					target: $("." + target).attr("id"), 
+					opacity: "0.5",
+					speed: 1000,
+					callback: function() {
+						
+						//var originalValue = $(this).val;
+						//var targetValue = $("." + target).attr("id").val;
+						//alert(originalValue);
+						//alert(targetValue);
+						//$(this).prop("selected", false);
+						//$("." + target).prop("selected", false);
+						//$(this).val("1");
+						//$("." + target).attr("id").val("1");
+
+						//$("div.id_100 option:selected").prop("selected", false);
+						//$("div.id_100 option[value=" + value + "]")
+						//		.prop("selected", true);
+
+					}
+				});
+
+			});
+
+		});
+
+	</script>
+	<style type="text/css">
+		#div_1 {
+			background-color: #CCC;
+			text-align: center;
+			width: 100px;
+			padding: 10px;
+		}
+
+		#div_2 {
+			background-color: #CCC;
+			text-align: center;
+			width: 100px;
+			padding: 10px;
+		}
+
+		#div_3 {
+			background-color: #CCC;
+			text-align: center;
+			width: 100px;
+			padding: 10px;
+		}
+
+		#div_4 {
+			background-color: #CCC;
+			text-align: center;
+			width: 100px;
+			padding: 10px;
+		}
+	</style>
+</head>
+<body>
+	<div id="divs">
+		<div id="div_1" class="order1">
+			THIS IS DIV 1
+			<select id="div1_order" class="go-swap" >
+				<option value="1" selected>1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+			</select>
+		</div>
+		<br />
+		<div id="div_2" class="order2">
+			THIS IS DIV 2
+			<select id="div2_order" class="go-swap">
+				<option value="1">1</option>
+				<option value="2" selected>2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+			</select>
+		</div>
+		<br />
+		<div id="div_3" class="order3">
+			THIS IS DIV 3
+			<select id="div3_order" class="go-swap">
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3" selected>3</option>
+				<option value="4">4</option>
+			</select>
+		</div>
+		<br />
+		<div id="div_4" class="order4">
+			THIS IS DIV 4
+			<select id="div4_order" class="go-swap">
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4" selected>4</option>
+			</select>
+		</div>
+		<br />
+		<strong><a href="javascript://" class="go-swap">Click here to swap the divs!</a></strong>
+		<br /><br /><br />
+	</div>
+</body>
+</html>
